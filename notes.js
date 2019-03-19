@@ -1,7 +1,18 @@
 const fs = require('fs');
 
-const getNotes = function() {
-    return 'Your notes...';
+const listNotes = function() {
+    const notes = loadNotes();
+
+    if (notes.length > 0) {
+        for(note of notes) {
+            console.log('Title: ', note.title);
+            console.log('Body: ', note.body);
+        }
+    } else {
+        console.log('No notes to list.');
+        
+    }
+    
 }
 
 const addNote = function (title, body) {
@@ -54,7 +65,7 @@ const loadNotes = function() {
 }
 
 module.exports = {
-    getNotes: getNotes,
     addNote: addNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 }
