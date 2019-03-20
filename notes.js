@@ -1,5 +1,18 @@
 const fs = require('fs');
 
+const readNote = function(title) {
+    const notes = loadNotes();
+
+    const note = notes.find(note => note.title === title);
+    if (note != null) {
+        console.log('Title: ', note.title);
+        console.log('Body: ', note.body);
+    } else {
+    console.log('Note not found.');
+    }
+    
+}
+
 const listNotes = function() {
     const notes = loadNotes();
 
@@ -67,5 +80,6 @@ const loadNotes = function() {
 module.exports = {
     addNote: addNote,
     removeNote: removeNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNote: readNote
 }
